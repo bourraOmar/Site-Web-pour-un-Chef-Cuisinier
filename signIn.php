@@ -27,7 +27,7 @@
   </script>
 </head>
 
-<body class="font-poppins">
+<body class="font-poppins bg-gray-200">
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 px-5 z-50 bg-white shadow-md">
     <div class="container mx-auto px-4">
@@ -37,7 +37,7 @@
         </a>
         <nav>
           <ul class="flex space-x-6">
-            <li class="cursor-pointer hover:text-amber-600 transition">Home</li>
+            <li class="cursor-pointer hover:text-amber-600 transition"><a href="index.php">Home</a></li>
             <li class="cursor-pointer hover:text-amber-600 transition">Menu</li>
             <li class="cursor-pointer hover:text-amber-600 transition">Reservation</li>
             <li class="cursor-pointer hover:text-amber-600 transition">Contact Us</li>
@@ -50,35 +50,21 @@
     </div>
   </header>
   <!-- Form log in -->
-  <form class="bg-white p-6 rounded-lg shadow-md">
-    <h4 class="text-2xl font-bold mb-6">Table Reservation</h4>
-    <div class="grid md:grid-cols-2 gap-4">
-      <input type="text" placeholder="Your Name*" required
-        class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
+  <form class="bg-white mx-96 mt-44 my-24 p-24 rounded-lg shadow-md ">
+    <h4 class="text-2xl font-bold mb-6">Log In</h4>
+    <div class="grid md:grid-cols-1 gap-4">
+      <label for="">Email</label>
       <input type="email" placeholder="Your Email Address" required
         class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
-      <input type="tel" placeholder="Phone Number*" required
+      <label for="">Password</label>
+      <input type="password" placeholder="Password*" required
         class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
-      <select class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
-        <option>Number of Guests</option>
-        <option>1</option>
-        <option>2</option>
-      </select>
-      <input type="date" placeholder="dd/mm/yyyy"
-        class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
-      <select class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
-        <option>Time</option>
-        <option>Breakfast</option>
-        <option>Lunch</option>
-        <option>Dinner</option>
-      </select>
     </div>
-    <textarea placeholder="Message" required
-      class="w-full p-2 mt-4 border rounded-lg focus:ring-2 focus:ring-amber-600 h-32"></textarea>
     <button type="submit"
       class="w-full mt-4 bg-amber-600 text-white py-3 rounded-lg hover:bg-amber-700 transition">
-      Make A Reservation
+      Log In
     </button>
+    <p class="text-center mt-4">Don't have an account? <a href="signUp.php" class="text-blue-500">Create account</a></p>
   </form>
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
