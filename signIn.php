@@ -37,7 +37,7 @@
         </a>
         <nav>
           <ul class="flex space-x-6">
-          <li class="cursor-pointer hover:text-amber-600 transition"><a href="index.php">Home</a></li>
+            <li class="cursor-pointer hover:text-amber-600 transition"><a href="index.php">Home</a></li>
             <li class="cursor-pointer hover:text-amber-600 transition"><a href="menu.php">Menu</a></li>
             <li class="cursor-pointer hover:text-amber-600 transition"><a href="contact.php">Contact Us</a></li>
             <li class="cursor-pointer" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000">
@@ -49,14 +49,14 @@
     </div>
   </header>
   <!-- Form log in -->
-  <form class="bg-white mx-96 mt-44 my-24 p-24 rounded-lg shadow-md ">
+  <form class="bg-white mx-96 mt-44 my-24 p-24 rounded-lg shadow-md" method="post">
     <h4 class="text-2xl font-bold mb-6">Log In</h4>
     <div class="grid md:grid-cols-1 gap-4">
       <label for="">Email</label>
-      <input type="email" placeholder="Your Email Address" required
+      <input type="email" placeholder="Your Email Address" name="email" required
         class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
       <label for="">Password</label>
-      <input type="password" placeholder="Password*" required
+      <input type="password" placeholder="Password" name="password" required
         class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-amber-600">
     </div>
     <button type="submit"
@@ -65,6 +65,32 @@
     </button>
     <p class="text-center mt-4">Don't have an account? <a href="signUp.php" class="text-blue-500">Create account</a></p>
   </form>
+  <?php
+  include("connect.php");
+  session_start();
+  $error = '';
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // username and password sent from form 
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $sql = "SELECT * FROM client WHERE email = '$email' and password = '$password'";
+
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_num_rows($result);
+    $count = mysqli_num_rows($result);
+    echo $count;
+    if ($count == 1) {
+      // session_register("myusername");
+      $_SESSION['login_user'] = $name;
+      header("location: index.php");
+    } else {
+      $error = "Your Login Name or Password is invalid";
+    }
+  }
+  ?>
+
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
     <div class="mx-auto px-4">
@@ -81,8 +107,6 @@
       </div>
     </div>
   </footer>
-
-
 </body>
 
 </html>
